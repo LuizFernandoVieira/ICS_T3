@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 @SuppressWarnings("serial")
-public class Gui extends Frame {
+public class Gui extends Frame implements ActionListener {
 
 	Button traduz, escolhe, arquiva, toca;
 	JFileChooser chooser;
@@ -12,8 +12,11 @@ public class Gui extends Frame {
 	TextArea dadosMidi;
 	JOptionPane opt;
 	Frame frame;
+	Facade fachada;
 
 	public Gui(Facade facade){
+		this.fachada = facade;
+		
 		setLayout(new FlowLayout());
 
 		mensagem = new TextField("tradutor inicializado", 30);
@@ -34,16 +37,16 @@ public class Gui extends Frame {
 		frame.setTitle("Nome do arquivo");
 		
 		escolhe = new Button("escolher arquivo MIDI");
-		escolhe.addActionListener(facade);
+		escolhe.addActionListener(this);
 		
 		traduz = new Button("traduzir arquivo");
-		traduz.addActionListener(facade);
+		traduz.addActionListener(this);
 
 		arquiva = new Button("criar arquivo .java");
-		arquiva.addActionListener(facade);
+		arquiva.addActionListener(this);
 
 		toca = new Button("tocar som gerado");
-		toca.addActionListener(facade);
+		toca.addActionListener(this);
 		
 		add(escolhe);
 		add(traduz);
@@ -61,6 +64,24 @@ public class Gui extends Frame {
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setBackground(new Color(198, 253, 255));
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		
+		if (source == traduz) {
+			fachada.traduz(this);
+		}
+		if (source == arquiva) {
+			fachada.geraArquivoJava(this);
+		}
+		if (source == escolhe) {
+			fachada.escolheArquivoMidi(this);
+		}
+		if (source == toca) {
+			fachada.toca(this);
+		}
 	}
 
 }
