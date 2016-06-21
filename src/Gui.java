@@ -6,11 +6,14 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class Gui extends Frame implements ActionListener {
 
-	Button traduz, escolhe, arquiva, toca;
+	Button traduz; 
+	Button escolhe;
+	Button arquiva;
+	Button toca;
 	JFileChooser chooser;
 	TextField mensagem;
 	TextArea dadosMidi;
-	JOptionPane opt;
+	JOptionPane option;
 	Frame frame;
 	Facade fachada;
 
@@ -59,7 +62,7 @@ public class Gui extends Frame implements ActionListener {
 		  	}
 		});
 
-		setTitle("Tradutor MIDI");
+		setTitle("Tradutor de arquivos MIDI");
 		setSize(550,320);
 		setVisible(true);
 		setLocationRelativeTo(null);
@@ -72,14 +75,11 @@ public class Gui extends Frame implements ActionListener {
 		
 		if (source == traduz) {
 			fachada.traduz(this);
-		}
-		if (source == arquiva) {
+		} else if (source == arquiva) {
 			fachada.geraArquivoJava(this);
-		}
-		if (source == escolhe) {
+		} else if (source == escolhe) {
 			fachada.escolheArquivoMidi(this);
-		}
-		if (source == toca) {
+		} else if (source == toca) {
 			fachada.toca(this);
 		}
 	}

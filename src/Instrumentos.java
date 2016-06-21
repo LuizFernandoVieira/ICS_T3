@@ -1,7 +1,10 @@
 import sintese.*;
 public class Instrumentos {
 	
-	InstrumentoAditivo i1,i2,i3,i4; //instrumentos do banco de dados
+	InstrumentoAditivo i1; 
+	InstrumentoAditivo i2;
+	InstrumentoAditivo i3;
+	InstrumentoAditivo i4;
 	
 	public Instrumentos(){
 		

@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.sound.midi.*;
 
 public class LeitorMidi {
+	
 	File midiFile;
 	Sequencer sequenciador;
 	Sequence sequencia;

@@ -1,6 +1,4 @@
 import javax.swing.*;
-
-import java.awt.event.*;
 import java.io.File;
 
 import javax.sound.midi.*;
@@ -8,11 +6,12 @@ import javax.sound.midi.*;
 import sintese.*;
 
 public class Facade {
+	
 	LeitorMidi leitor;
 	Tradutor tradutor;
 	Sequence sequencia;
 	Polifonia polifonia;
-	Som som = null;
+	Som som;
 	
 	public Facade() {
 		leitor = new LeitorMidi();
@@ -40,7 +39,7 @@ public class Facade {
 				return;
 			}
 			try{
-				CriaJava.criaJava(polifonia, nome);
+				CriaArquivoJava.criaJava(polifonia, nome);
 			}catch (Exception e){
 				e.printStackTrace();
 			}

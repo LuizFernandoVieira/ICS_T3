@@ -2,9 +2,9 @@
 import java.io.*;
 import sintese.*;
 
-public class CriaJava {
+public class CriaArquivoJava {
 
-	public CriaJava(){}
+	public CriaArquivoJava(){}
 
 	static public void criaJava(Polifonia polifonia, String nome) throws IOException{
 		Instrumentos ins = new Instrumentos();
@@ -12,10 +12,9 @@ public class CriaJava {
 		FileWriter fp = new FileWriter(java);
 		fp.write("import sintese.*;");
 		fp.write(System.lineSeparator());
-		fp.write("public class "+nome+"{");//  classe{
+		fp.write("public class "+nome+"{");
 		fp.write(System.lineSeparator());
-		/**  inicializador **/
-		fp.write("public "+nome+"()"+"{");//   inicializador{{
+		fp.write("public "+nome+"()"+"{");
 			fp.write("InstrumentoAditivo i1,i2,i3;");
 			fp.write(System.lineSeparator());
 			fp.write("Curva[][] curvas;");

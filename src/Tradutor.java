@@ -4,12 +4,12 @@ import sintese.*;
 public class Tradutor {
 
 	Instrumentos instrumentos;
+	
 	public Tradutor(){
 		instrumentos = new Instrumentos();
 	}
 
 	public Polifonia traduz(Sequence sequencia){
-/**  transforma um arquivo midi em uma polifonia  **/
 		Polifonia polifonia = new Polifonia();
 		double duracao = (double)sequencia.getMicrosecondLength()/1000000;
 		double tickTime = duracao/sequencia.getTickLength();//tempo em segundos de um tick
@@ -34,7 +34,6 @@ public class Tradutor {
 	}
 
 	public Voz leTrack(Track track, double tickTime){
-/**  armazena um track em uma Voz  **/
 		Voz voz = new Voz(tabelaDeInstrumentos(0));
 		Melodia melodia = new Melodia();//inicializa melodia da trilha
 		long on = -1;//armazena provisoriamente o instante inicial de uma nota
@@ -100,7 +99,6 @@ public class Tradutor {
 	}
 
 	public InstrumentoAditivo tabelaDeInstrumentos (int instrumentoMidi){
-/** para cada instumento MIDI seleciona um instrumento aditivo  **/
 		InstrumentoAditivo ins = new InstrumentoAditivo();
 		if (instrumentoMidi < 41)
 			ins = instrumentos.i1;
@@ -112,7 +110,6 @@ public class Tradutor {
 	}
 
 	public Nota fazNota(long on, long off, int valor, int velocity, double tickTime){
-/** transforma parametros midi em uma instancia de Nota **/
 		double duracao = (off-on)*tickTime;
 		double frequencia = 440*(Math.pow(2, (double)(valor-69)/12));
 		float amplitude = velocity/117f;
